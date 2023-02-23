@@ -1,8 +1,17 @@
-import './Exhibit.css'
+import React, { Component } from 'react';
+import './Exhibit.css';
 
-export default function Exhibit(props){
-    return <div className='exhibit'>
-                <h2>Card Wrapper</h2>
-                <div className='cards'>{props.children}</div>
+class Exhibit extends Component {
+    render() {
+        return (
+            <div className="Exhibit">
+                <h2 className="ExhibitHeading">{this.props.name}</h2>
+                <div className="ExhibitContent">
+                    {this.props.children}
+                </div>
             </div>
+        );
+    }
 }
+
+export default Exhibit;

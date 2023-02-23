@@ -1,17 +1,23 @@
 import './App.css';
 import Banner from './Components/Banner';
-import Card from './Components/Card'
 import Exhibit from './Components/Exhibit';
+import getIP from './Components/IpFetch'
+
+var ip = ''
+getIP('ipv4').then(data => ip = String(data)).catch(er => console.error);
+console.log(ip)
+
+var ipSix = ''
+getIP('ipv6').then(data => ipSix = String(data)).catch(er => console.error);
+console.log(ip)
 
 function App() {
   return (
     <div>
-    <Banner />
-    <Exhibit>
-      <Card title='Card Title'
-      imageUrl='https://i.ebayimg.com/images/g/dPIAAOSwjL5jDgxv/s-l500.jpg'
-      body='This is the body of our new component card.'/>
-    </Exhibit>
+    <Banner bannerText='Sextant'/>
+    <Exhibit name = 'Your IPv4' children={ip}/>
+    <Exhibit name = 'Your IPv6' children = {ipSix}/>
+    <Exhibit name = 'Empty Space'/>
     </div>
   );
 }
